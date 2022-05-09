@@ -1,1 +1,3 @@
-export function updateFiles() {}
+export function updateFiles() {
+  console.log("teste");
+}
