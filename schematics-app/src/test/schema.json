@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "TestSchematics",
+  "title": "Test Schematics",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Project name into angular.json file.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Project name"
+    },
+    "name": {
+      "type": "string",
+      "description": "Feature name",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Component feature name"
+    }
+  },
+  "required": ["name", "project"]
+}
