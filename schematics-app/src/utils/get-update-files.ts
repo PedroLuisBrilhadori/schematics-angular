@@ -1,13 +1,15 @@
 import * as ts from "typescript";
 import { list } from "recursive-readdir-async";
-import { noop, Rule, Tree } from "@angular-devkit/schematics";
+import { chain, Rule, Tree } from "@angular-devkit/schematics";
 
-export async function updateFiles(sourceRoot, host: Tree): Promise<Rule> {
-  const updateFiles = await getUpdateFiles(sourceRoot);
+export function updateFiles(sourceRoot): Rule {
+  return async (host: Tree) => {
+    getUpdateFiles(sourceRoot).then((files) => {
+      console.log(files);
+    });
 
-  console.log(updateFiles);
-
-  return noop();
+    return chain([]);
+  };
 }
 
 function getUpdateFiles(sourceRoot) {

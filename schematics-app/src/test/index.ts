@@ -16,7 +16,7 @@ import { ComponentSchema } from "./schema";
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function test(options: ComponentSchema): Rule {
-  return async (host: Tree, context) => {
+  return async (host: Tree) => {
     /**
      * Workspace validation.
      */
@@ -47,7 +47,7 @@ export function test(options: ComponentSchema): Rule {
 
     const template = templateGenerator("./files", options, project.sourceRoot);
 
-    return chain([mergeWith(template), updateFiles(project.sourceRoot, host)]);
+    return chain([mergeWith(template), updateFiles(project.sourceRoot)]);
   };
 }
 
